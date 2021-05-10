@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>nose art</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+<link rel="icon" href="https://1.bp.blogspot.com/-h82Y05q42kc/YJjpmpZT3rI/AAAAAAAAMI0/0_QQd4U58jopE11T54k9Jq3jyjZnC0mZwCLcBGAsYHQ/s1280/SAVE_20210510_133533.jpeg" type="image/jpg" sizes="auto">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+<style type="text/css">
+body{
+font-family : "Itim",cursive;
+font-size : 11.5px;
+}
+</style>
+</head>
+<body>
+<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+<script type="text/javascript">
+var cam,posenet,pose;
+function setup(){
+createCanvas(300,300);
+cam = createCapture(VIDEO);
+cam.size(300,300);
+cam.hide();
+posenet = ml5.poseNet(cam,modelLoaded);
+posenet.on("pose",getPoses);
+}
+function getPoses(poses){
+if(poses.length > 0)
+pose = poses[0].pose;
+}
+function modelLoaded(){
+console.log("model loaded!!!!!");
+}
+function draw(){
+background("rgba(0,0,0,0.25)");
+image(cam,0,0,300,150);
+if(pose){
+var x = pose.nose.x;
+var y = (pose.nose.y + 15);
+if(x < 150) x -= 35;
+else if(x > 150) x += 35;
+if(y < 150) y -= 35;
+else if(y > 150) y += 35;
+for(var i=0;i<15;i++){
+noStroke();
+fill(random(255),random(255),random(255));
+ellipse(x + random(-25,25),y + random(-25,25),5);
+}}}
+</script>
+<center>
+● Make sure that you have allowed the camera access of your browser ✅.<br><br>
+● Hold your camera steadily at front of your face 📸,
+Make sure that you are in a bright room 🔆 , your face is totally
+uncovered and your whole face is fitted in the frame 🤗.<br><br>
+● Now move your nose 👃 and happy nose drawing 🎨 !!!!!<br><br>
+( art + machine learning ) = magic 🎩 !!!!!<br><br>
+<center>
+</body>
+</html>
