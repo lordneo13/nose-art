@@ -6,4 +6,4 @@
 
 ● Now move your nose 👃 and happy nose drawing 🎨 !!!!!
 
-( art + machine learning ) = magic 🎩 !!!!!
+<b>( art + machine learning ) = magic 🎩 !!!!!<b>
